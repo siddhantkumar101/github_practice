@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import { useAuth } from "./context/AuthContext.js";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user } = useAuth();
 
   return (
     <>
-    
+     {(user && user.username) ? <Profile /> : <Login />}
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
